@@ -1,7 +1,13 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These functions makeCacheMatrix & cacheSolve allow you to cache the expensive
+## matrix inverse operation and lets you retreive cached inverse of the matrix 
+## when you have to run the inverse repeatedly in a loop
 
-## Write a short comment describing this function
+## This function allows you to create list that contains 4 functions to
+## set your matrix in cache
+## get your matrix from cache
+## setsolve - set the inverse of your matrix in cache
+## grtsolve - get the inverse of matrix from cache
+## usage : cm<- makeCacheMatrix (your_matrix), you need to first call this function to have the funtion pointer ready for the cacheSolve function to call one the above 4 functions.
 makeCacheMatrix <- function(x = matrix()) {
         m <- NULL
         set <- function(y) {
@@ -17,7 +23,9 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## usage : cacheSolve(cm), cm is the object returned by above makeCacheMatrix function
+## It first calls the getSolve function on passed object to check of inverse is in cache, if found it returns the inverse
+## If inverse not found in cache, it calls setSolve function on passed object to cache the inverse and returns it
 
 
 cacheSolve <- function(x, ...) {
